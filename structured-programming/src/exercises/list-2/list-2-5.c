@@ -12,7 +12,7 @@ Em seguida, chame este módulo a partir de um módulo main para testar seu progr
 
 float calcularVolumeEsfera(float raio) {
     const float PI = 3.141592;
-    return (4*PI*pow(raio, 3))/3;
+    return (4.0/3.0)*PI*pow(raio, 3);
 }
 
 main() {

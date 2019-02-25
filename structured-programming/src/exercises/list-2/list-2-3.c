@@ -1,5 +1,5 @@
 /*
-Uma equação do segundo grau possui a forma Ax2 + Bx + C = 0. 
+Uma equação do segundo grau possui a forma Ax2 + Bx + C = 0.
 Crie um módulo para receber os valores de A, B e C e retornar o valor de delta (∆ = B2 – 4AC).
 Em seguida, chame este módulo a partir de um módulo main para testar seu programa.
 */
