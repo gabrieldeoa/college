@@ -39,5 +39,4 @@ main() {
     // Liberando memória
     free(nome);
     free(sobrenome);
-    return 0;
 }
