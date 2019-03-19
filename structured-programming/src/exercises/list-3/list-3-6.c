@@ -2,7 +2,6 @@
 O Índice de Massa Corpórea (IMC) indica o grau de obesidade de um paciente.
 A tabela a seguir ilustra os diferentes níveis de obesidade em que uma pessoa pode se encontrar:
  
-
 IMC (kg/m2)
 Tipo de obesidade 
 < 25 Ausente
