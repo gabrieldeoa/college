@@ -8,24 +8,14 @@ Neste programa, informe se um número fornecido pelo usuário é par ou ímpar.
 #include <stdio.h>
 
 int divisivel(int x, int y) {
-    int divisivel = 0;
-
-    if( x % y == 0) {
-        divisivel = 1;
-    }
-    return divisivel;
+    return ( x % y == 0);
 }
-
 
 main() {
     int x;
-
+    
     printf("Forneca o primeiro numero:  ");
     scanf("%d", &x);
 
-    if(divisivel(x, 2)) {
-        printf("O número %d e par", x);
-    } else {
-        printf("O número %d e impar", x);
-    }
+    printf("\no numero %d e %s", x, divisivel(x, 2) ? "par" :  "impar");
 }
