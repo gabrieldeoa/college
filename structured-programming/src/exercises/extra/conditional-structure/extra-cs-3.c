@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-float ordemDecrescente(float *x, float *y, float *z) {
+void ordemDecrescente(float *x, float *y, float *z) {
     float n1, n2, n3;
 
     if(*x >= *y && *x >= *z) {

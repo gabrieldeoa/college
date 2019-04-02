@@ -5,7 +5,6 @@ Em seguida, chame a função criada a partir de um módulo main para testar seu 
 */
 
 #include <stdio.h>
-#include <stdlib.h>
 
 char* mesDoAno(int valor) {
 
@@ -47,7 +46,7 @@ char* mesDoAno(int valor) {
            return "dezembro";
             break;
         default:
-           return " ";
+           return "";
             break;
     }
 }
