@@ -7,46 +7,47 @@ Em seguida, chame estes módulos a partir de um módulo main para testar seu pro
 
 #include <stdio.h>
 
-float floor(float n) {
-    int i = 0;
-    if(n>=0) {
-        while(i<n) {
-            i++;
+float piso(float x) {
+    float res = 0;
+
+    if(x >= 0) {
+        while(res <= x) {
+            res = res + 1;
         }
 
-        return i-1;
+        return res - 1;
     }
     else {
-        while(i>n) {
-            i--;
+        while(res > x) {
+            res = res - 1;
         }
-        return i;
+        return res;
     }
 }
 
-float ceil(float n) {
-    int i = 0;
+float teto(float x) {
+    float res = 0;
 
-    if(n>=0) {
-        while(i<n) {
-            i++;
+    if(x >= 0) {
+        while(res < x) {
+            res = res + 1 ;
         }
-        return i;
+        return res;
     }
     else {
-        while(i>n) {
-            i--;
+        while(res > x) {
+            res = res - 1;
         }
-        return i+1;
+        return res + 1;
     }
 }
 
 main() {
     float x;
-    printf("Forneca um número para ter seu valor piso: ");
+    printf("Forneca um numero para ter seu valor piso: ");
     scanf("%f", &x);
 
-    printf("O piso de %.2f e %.2f", x, floor(x));
+    printf("O piso de %.2f e %.2f", x, piso(x));
 
-    printf("\nO teto de %.2f e %.2f", x, ceil(x));
+    printf("\nO teto de %.2f e %.2f", x, teto(x));
 }
