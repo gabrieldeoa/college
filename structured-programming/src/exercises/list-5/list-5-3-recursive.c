@@ -7,6 +7,23 @@ Em seguida, chame este módulo a partir de um módulo main para testar seu progr
 
 #include <stdio.h>
 
+int fatorP2 (int n) {
+    return n % 2 == 0;
+}
+
+int fatorP3 (int n) {
+    return n % 3 == 0;
+}
+
+int primoLogico(int n) {
+    if( n == 2 || n == 3) return 1;
+
+    else if(n == 1) return 0;
+
+    else return !(fatorP2(n) || fatorP3(n));
+}
+
+
 int qtdDivisoresRec(int num, int aux) {
     // valor de parada
     if(aux == 0)
@@ -33,6 +50,7 @@ main() {
         scanf("%d", &n);
 
         printf("\nO numero %d %s primo", n, primo(n) ? "e" : "nao e");
+        printf("\nO numero %d %s primo(usando a funcao com logica)", n, primoLogico(n) ? "e" : "nao e");
 
         printf("\n\nDeseja Continuar [1 para sim e 2 para nao] ? ");
         scanf("%d", &r);
