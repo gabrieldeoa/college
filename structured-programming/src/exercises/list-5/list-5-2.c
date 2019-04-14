@@ -7,25 +7,27 @@ Teste as potências de 2^3, 2^-3, -3^2 e -3^-2.
 #include <stdio.h>
 #include <stdlib.h>
 
-float potencia(int base, int exp) {
-    float resultado = base;
+float absoluto(float n) {
+    return (n < 0)
+        ? -1 * n
+        : n;
+}
 
-    if(base == 0) return 0;
-    else if(exp == 0) return 1;
-    else if(exp == 1) return base;
+float potencia(int base, int expoente) {
+    float resposta = 1;
 
-    else if(exp > 0) {
-        for(int i = 1; i<exp; i++)
-            resultado = resultado * base;
-    }
-    else if(exp < 0) {
-
-        for(int i = -1; i>exp; i--)
-            resultado = (resultado * base);
-        resultado = 1/resultado;
+    for(int i = 0; absoluto(e) > i; i++) {
+        resposta = base * resposta;
     }
 
-    return resultado;
+    if(e == 0)
+        return 1;
+
+    else if(e > 0)
+        return resposta;
+    else
+        return 1/resposta;
+
 }
 
 main() {
