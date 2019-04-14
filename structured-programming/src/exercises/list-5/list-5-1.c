@@ -6,7 +6,6 @@ Em seguida, chame estes módulos a partir de um módulo main para testar seu pro
 */
 
 #include <stdio.h>
-
 float piso(float x) {
     float res = 0;
 
