@@ -2,33 +2,25 @@
 Um número primo é um inteiro positivo que possui apenas dois divisores também positivos diferentes.
 Escreva uma função para retornar verdadeiro ou falso para o fato de um número ser primo.
 Em seguida, chame este módulo a partir de um módulo main para testar seu programa.
+===> RECURSIVO <===
 */
 
 #include <stdio.h>
 
-int quantidadeDivisores(int x) {
-    int divisores = 0;
-    for(int i = 1; i <= x; i++){
-        if(x % i == 0)
-            divisores++;
-    }
-    return divisores;
+int qtdDivisoresRec(int num, int aux) {
+    // valor de parada
+    if(aux == 0)
+        return 0;
+    // quando for divisivel, soma 1 e decrementa
+    else if(num % aux == 0)
+        return 1 + qtdDivisoresRec(num, aux - 1);
+    // quando nao for so decrementa
+    else
+        return qtdDivisoresRec(num, aux - 1);
 }
 
 int primo(int x) {
-    return (quantidadeDivisores(x) == 2);
-}
-
-int primo_direto(int n) {
-    if(n == 0 || n == 1) return 0;
-
-    for(int i=2; i < n; i++){
-        if(n % i == 0){
-            return 0;
-        }
-    }
-
-    return 1;
+    return (qtdDivisoresRec(x, x) == 2);
 }
 
 main() {
@@ -40,8 +32,7 @@ main() {
         printf("\nForneca um numero para checar se ele e primo: ");
         scanf("%d", &n);
 
-        printf("\nO numero %d %s primo. Diretamente", n, primo_direto(n) ? "e" : "nao e");
-         printf("\nO numero %d %s primo. Usando a funcao auxiliar quantidadeDivisores", n, primo(n) ? "e" : "nao e");
+        printf("\nO numero %d %s primo", n, primo(n) ? "e" : "nao e");
 
         printf("\n\nDeseja Continuar [1 para sim e 2 para nao] ? ");
         scanf("%d", &r);
