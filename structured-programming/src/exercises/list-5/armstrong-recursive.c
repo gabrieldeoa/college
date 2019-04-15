@@ -21,17 +21,15 @@ int qtdDeDigitos(int n){
   return r;
 }
 
-int armstrongRec(int a){
-    return armstrongRecAux(a, 0, 1) == a;
+int armstrongRec(int x){
+    return armstrongRecAux(x, 1);
 }
 
-// ERRADO ---- TODO
-int armstrongRecAux(int a, int res, int aux){
-    if(qtdDeDigitos(a) == aux)
-        return 0;
-    else if
-        return res + armstrongRecAux(a, (int)pow(digito(a,aux+1), qtdDeDigitos(aux)));
-        return armstrongRecAux(a, (int)pow(digito(a,aux+1), qtdDeDigitos(aux))));
+int armstrongRecAux(int x, int pos){
+    if (pos == qtdDeDigitos(x))
+        return (int)pow(digito(x, pos), qtdDeDigitos(x));
+    else
+        return armstrongRecAux(x, pos+1) + (int)pow(digito(x, pos), qtdDeDigitos(x));
 }
 
 main()
@@ -40,5 +38,5 @@ main()
     printf("ESCREVA UM NUMERO INTEIRO: ");
     scanf("%d", &x);
 
-    printf("O numero %d %s numero de armstrong",x, armstrongRec(x)? "e" : "nao e");
+    printf("O numero %d %d numero de armstrong",x, armstrongRec(x));
 }
