@@ -7,7 +7,6 @@ Em seguida, chame estes módulos a partir de um módulo main para testar seu pro
 #include <stdio.h>
 #include <stdlib.h>
 
-
 void escreverVetor(int v[], int colunas) {
     for(int i = 0; i < colunas; i++)
         printf("[%d]", v[i]);
@@ -106,5 +105,6 @@ main() {
     vetorOrdemDecrescentePonteiro(vP, colunas);
     escreverVetor(vP, colunas);
 
+    free(vP);
 }
 
