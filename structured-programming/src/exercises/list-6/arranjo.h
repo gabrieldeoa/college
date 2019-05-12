@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 void escreverMatriz(int **m, int linhas, int colunas) {
     int i, j;
@@ -80,3 +81,17 @@ void copiarVetorParaMatrizPonteiro(int *v, int **m, int linhas, int colunas) {
     }
 }
 
+void prencherPosicao(int **m, int linhas, int colunas, int x, int y, int marcador) {
+    int i, j;
+    for(i = 0; i < linhas; i++) {
+        for(j=0; j < colunas; j++){
+            if(i == x && j == y) {
+                m[i][j] = marcador;
+            }
+        }
+    }
+}
+
+int movimentoValido(int xi, int yi, int xf, int yf) {
+    return ((xi >=0 || xi <=7) && (yi >=0 || yi <=7) && (xf >=0 || xf <=7) && (yf >=0 || yf <=7));
+}
