@@ -11,18 +11,7 @@ Em seguida, chame este módulo a partir de um módulo main para testar seu progr
 
 
 int torre(int xi, int yi, int xf, int yf) {
-    return ( yi == yf || xi == xf);
-}
-
-prencherPosicao(int **m, int linhas, int colunas, int x, int y, int marcador) {
-    int i, j;
-    for(i = 0; i < linhas; i++) {
-        for(j=0; j < colunas; j++){
-            if(i == x && j == y) {
-                m[i][j] = marcador;
-            }
-        }
-    }
+    return( movimentoValido(xi, yi, xf, yf) && ( yi == yf || xi == xf) );
 }
 
 main() {
@@ -44,7 +33,7 @@ main() {
     printf("Posicao inicial de y: ");
     scanf("%d", &yI);
 
-    printf("\nPosição inicial da peça (posição representada pelo numero 1): ");
+    printf("\nPosicao inicial da peca (1): ");
     prencherPosicao(m, linhas, colunas, xI, yI, 1);
     escreverMatriz(m, linhas, colunas);
 
@@ -55,13 +44,12 @@ main() {
     scanf("%d", &yF);
 
     if(torre(xI, yI, xF, yF)) {
-        printf("\nO movimento é possivel, segue onde a peca irá (posição representada pelo numero 2)");
+        printf("\nO movimento é possivel, segue onde a peca ira (2)");
         prencherPosicao(m, linhas, colunas, xF, yF, 2);
         escreverMatriz(m, linhas, colunas);
 
     } else {
         printf("\nO movimento não permitido");
-
     }
 }
 
