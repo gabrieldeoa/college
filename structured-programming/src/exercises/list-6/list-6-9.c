@@ -1,4 +1,8 @@
 /*
+Mais uma sobre o jogo de xadrez: O cavalo é uma peça que se movimenta em L.
+Entenda este L como os cantos opostos da diagonal de um retângulo 3x2.
+Escreva uma função para verificar se duas posições do tabuleiro podem ser a origem e o destino de um movimento do cavalo e retornar verdadeiro ou falso.
+Em seguida, chame este módulo a partir de um módulo main para testar seu programa.
 */
 
 #include <stdio.h>

@@ -1,4 +1,8 @@
 /*
+Ainda sobre o jogo de xadrez, o bispo é uma peça que se movimenta apenas em diagonal.
+Escreva uma função para verificar se duas posições do tabuleiro podem ser a origem e o
+destino de um movimento do bispo e retornar verdadeiro ou falso.
+Em seguida, chame este módulo a partir de um módulo main para testar seu programa.
 */
 
 #include <stdio.h>
