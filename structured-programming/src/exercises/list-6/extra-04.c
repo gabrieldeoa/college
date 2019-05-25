@@ -7,10 +7,11 @@
 void requisitarRespostas(char *r, int col) {
     int i;
     for(i = 0; i < col; i++) {
-        printf("\nForneca a respostas da questão %d: ", i);
+        printf("\nForneca a respostas da questão %d: ", i+1);
         scanf("\n");
         r[i] = getchar();
     }
+
     printf("\n");
 }
 
@@ -36,15 +37,15 @@ void corrigirProva(char *g, char *r, int *fq, int *ap, int *nota, int col ) {
 
     for(i = 0; i < col; i++) {
         if(g[i] == r[i]) {
-            *nota++;
+            *nota = *nota + 1;
         }
     }
 
     //atualizando aprovado
-    if(*nota >= 6) *ap++;
-    
+    if(*nota >= 6) *ap = *ap + 1;
+
     //atualizando frequencia
-    fq[*nota]++;
+    fq[*nota] = fq[*nota] + 1;
 }
 
 int maiorFrequencia(int *fq, int col) {
@@ -59,15 +60,15 @@ int maiorFrequencia(int *fq, int col) {
 
 void escreverMaiorFrequencia(int *fq, int col, int maior) {
     int i = 0;
+    printf("\nMaior(es) Frequencia(s):");
 
     for(i = 0; i < col; i++) {
         if(fq[i] == maior)
-            printf("%d", i);
+            printf("\n%d", i);
     }
-    return maior;
 }
 
-float percentualAprovacao(int *fq, int col, int aprovados, int total) {
+float percentualAprovacao(int *fq, int aprovados, int total) {
     return (aprovados * 100)/total;
 }
 
@@ -88,11 +89,11 @@ main() {
     escreverRespostas(gabarito, tam);
 
     while(1) {
-        printf("Forneca o número do aluno: ");
+        printf("\nForneca o número do aluno: ");
         scanf("%d", &numero);
 
         if(numero == 0) break; // ponto de parada
-        
+
         // incrementando aluno
         total++;
 
@@ -100,15 +101,15 @@ main() {
 
         corrigirProva(gabarito, respostas, frequencia, &aprovados, &nota, tam);
 
-        printf("\nO aluno %d tirou %d", numero, nota);
+        printf("\nO aluno %d tirou %d\n", numero, nota);
     }
 
     maior = maiorFrequencia(frequencia, tam+1);
 
     escreverMaiorFrequencia(frequencia, tam+1, maior);
 
-    porcentagem = percentualAprovacao(frequencia, tam, aprovados, total);
-    printf("A porcentagem de aprovacao e %f", porcentagem);
+    porcentagem = percentualAprovacao(frequencia, aprovados, total);
+    printf("\nA porcentagem de aprovacao e %f", porcentagem);
 
     free(gabarito);
     free(respostas);
