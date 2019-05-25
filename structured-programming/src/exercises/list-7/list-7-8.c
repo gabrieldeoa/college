@@ -1,5 +1,9 @@
+/*
+Refaça o exercício 9, da lista de exercícios 02, mas sem passagem de argumentos por referência.
+Retorne um ponto como resultado. 
+*/
+
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct TPonto {
     float x;

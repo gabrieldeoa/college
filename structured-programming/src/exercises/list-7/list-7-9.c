@@ -1,5 +1,9 @@
+/*
+Refaça o exercício 10, da lista de exercícios 02, mas sem passagem de argumentos por referência.
+Retorne um número racional como resultado.
+*/
+
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct TNumeroRacional {
     float n;

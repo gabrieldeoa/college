@@ -1,3 +1,10 @@
+/*
+Considerando os estados civis solteiro, casado, viúvo, separado e des­quitado,
+escreva definições de tipos de dados para:
+a. sexo;
+b. estado civil.
+*/
+
 #include <stdio.h>
 
 enum TSexo {masculino, feminino};

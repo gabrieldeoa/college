@@ -1,5 +1,10 @@
+/*
+Devemos definir um telefone compondo as seguintes informações: DDD + número + tipo (residencial, comercial e móvel).
+Um contato de uma agenda telefônica precisa ser definido com o nome da pessoa e o seu telefone.
+Escreva definições para tipos de dados capazes de representar o tipo do telefone, o telefone e o contato da agenda.
+*/
+
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef enum TTipoTelefone {
     residencial = 1,

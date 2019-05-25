@@ -1,3 +1,8 @@
+/*
+Um endereço compõe-se de tipo (Rua, Avenida, Largo, Jardim, Estrada etc.),
+logradouro, número,complemento, bairro, cidade, estado e CEP.
+Escreva uma definição para um tipo de dado capaz de representar um endereço.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 

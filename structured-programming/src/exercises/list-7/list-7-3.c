@@ -1,3 +1,8 @@
+/*
+No jogo de xadrez, identificamos uma linha do tabuleiro por um número inteiro entre 1 e 8.
+Cada coluna do mesmo tabuleiro é identificada por uma letra entre A e H.
+Escreva uma definição para um tipo de dado capaz de representar uma posição do tabuleiro de um jogo de xadrez.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
