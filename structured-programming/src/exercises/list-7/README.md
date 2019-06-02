@@ -1,3 +1,3 @@
-#New Types
+# New Types
 
 Enum and Struct.

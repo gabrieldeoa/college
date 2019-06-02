@@ -1,3 +1,3 @@
-#arrangement
+# Arrangement
 
 Vector and Matrix.
