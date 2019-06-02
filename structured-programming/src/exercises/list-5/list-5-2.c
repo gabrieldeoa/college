@@ -13,7 +13,7 @@ float absoluto(float n) {
         : n;
 }
 
-float potencia(int base, int expoente) {
+float potencia(int base, int e) {
     float resposta = 1;
 
     for(int i = 0; absoluto(e) > i; i++) {
