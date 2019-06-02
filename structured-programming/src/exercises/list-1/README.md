@@ -1,3 +1,3 @@
-#Input/Ouput
+# Input/Ouput
 
 Commands: printf, scanf, malloc, free.
