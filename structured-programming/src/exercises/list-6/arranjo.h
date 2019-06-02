@@ -93,5 +93,5 @@ void prencherPosicao(int **m, int linhas, int colunas, int x, int y, int marcado
 }
 
 int movimentoValido(int xi, int yi, int xf, int yf) {
-    return ((xi >=0 || xi <=7) && (yi >=0 || yi <=7) && (xf >=0 || xf <=7) && (yf >=0 || yf <=7));
+    return ((xi >=0 && xi <=7) && (yi >=0 && yi <=7) && (xf >=0 && xf <=7) && (yf >=0 && yf <=7));
 }

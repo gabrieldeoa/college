@@ -51,9 +51,9 @@ main() {
     multiplicarIndicePorValor(v, colunas);
     multiplicarIndicePorValorPonteiro(vP, colunas);
 
-    printf("\nVetores somando posicao pelo valor:");
+    printf("\nVetores multiplicando posicao pelo valor:");
 
-    printf("\nv: ", );
+    printf("\nv: ");
     escreverVetor(v, colunas);
 
     printf("\nvP:");

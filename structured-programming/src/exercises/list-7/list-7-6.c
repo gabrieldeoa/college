@@ -5,6 +5,7 @@ Escreva definições para tipos de dados capazes de representar o tipo do telefo
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef enum TTipoTelefone {
     residencial = 1,

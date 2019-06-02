@@ -44,13 +44,13 @@ main() {
     Sexo sexo;
     EstadoCivil estadoCivil;
 
-    printf("Forneca o seu sexo [0-masculino ou 1-feminino");
-    scanf("%d", &s);
-    sexo = (Sexo)s;
+    printf("Forneca o seu sexo [0-masculino ou 1-feminino]: ");
+    scanf("%d", &sexo);
+    //sexo = (Sexo)s;
 
-    printf("Forneca o seu sexo [0-solteiro, 1-casado, 2-viuvo, 3-separdo, 4-desquitado");
-    scanf("%d", &es);
-    estadoCivil = (EstadoCivil)es;
+    printf("Forneca o seu sexo [0-solteiro, 1-casado, 2-viuvo, 3-separdo, 4-desquitado]: ");
+    scanf("%d", &estadoCivil);
+    //estadoCivil = (EstadoCivil)es;
 
     printf("Voce e do sexo %s e seu estado civil e %s",
         TSexoParaTexto(sexo),
