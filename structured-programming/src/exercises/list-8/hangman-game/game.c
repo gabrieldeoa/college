@@ -82,7 +82,7 @@ int contemLetra(char * palavra, char letra) {
 
 void jogada(JogoDaForca *jg, char letra) {
     int i;
-    
+
     //Atualizando letras utilizadas
     if(contemLetra(jg->forca.letrasUsadas, letra) == 0) {
         atualizarLetrasUtilizadas(jg->forca.letrasUsadas, letra);
@@ -121,9 +121,9 @@ void iniciarJogo(JogoDaForca *jg) {
         scanf("\n%c", &letra);
         jogada(jg, letra);
     }
-   
+
     printf("\n\nVoce %s !", (venceu == 0) ? "Venceu" : "Perdeu");
-    
+
     jg->resultado = !venceu;
 }
 
@@ -132,12 +132,12 @@ void printarJogo(JogoDaForca *jg) {
     printf("\nVIDAS: %d\t LETRAS USADAS: %s", jg->forca.vidas, jg->forca.letrasUsadas);
 }
 
-void salvarArquivoDeResultadoBinario(FILE **arquivo, JogoDaForca jg) {
-    
+void salvarArquivoDeResultadoBinario(JogoDaForca jg, FILE **arquivo) {
+    fwrite(&jg, sizeof(Forca), 1, *arquivo);
 }
 
 main() {
-    FILE * arquivoPalavras;
+    FILE * arquivoPalavras, *arquivoResultados;
 
     JogoDaForca jg;
     jg.jogador = (char *)malloc(sizeof(char));
@@ -153,4 +153,9 @@ main() {
     sortearPalavraParaJogo(&jg, &arquivoPalavras);
     inicializarJogo(&jg);
     iniciarJogo(&jg);
+
+    //arquivoResultados = fopen(DIR_RESULT, "ab+");
+    //salvarArquivoDeResultadoBinario(jg, &arquivoResultados);
+    fclose(arquivoPalavras);
+    //fclose(arquivoResultados);
 }
