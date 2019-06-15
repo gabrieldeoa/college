@@ -1,4 +1,4 @@
-/*
+    /*
 Neste exercício, você irá supor que algumas funções não existem em bibliotecas da linguagem C e as programará.
 Em seguida, teste cada módulo programado em um módulo main. Segue a lista de funções a serem implementadas:
 a. strcpy
