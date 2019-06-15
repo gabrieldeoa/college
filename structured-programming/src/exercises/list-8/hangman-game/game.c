@@ -8,13 +8,12 @@ int strLen (char * t1) {
     return i;
 }
 
-int strCmp(char * t1, char * t2) {
+int vitoria(char * p) {
     int i;
-    for(i = 0; t1[i] != '\0' || t2[i] != '\0'; i++) {
-        if(t2[i] < t1[i]) return 1;
-        else if (t2[i] > t1[i]) return -1;
+    for(i = 0; p[i] != '\0'; i++) {
+        if(p[i] == '#') return 0;
     }
-    return 0;
+    return 1;
 }
 
 void strCpy(char * t1, char * t2 ) {
@@ -112,17 +111,17 @@ void iniciarJogo(JogoDaForca *jg) {
     while(1) {
         system("clear");
 
-        venceu = strCmp(jg->forca.palavraSecreta, jg->forca.palavra);
+        venceu = vitoria(jg->forca.palavra);
         printarJogo(jg);
 
-        if(jg->forca.vidas == 0 || venceu == 0) break;
+        if(jg->forca.vidas == 0 || venceu) break;
 
         printf("\nForneca a letra: ");
         scanf("\n%c", &letra);
         jogada(jg, letra);
     }
 
-    printf("\n\nVoce %s !", (venceu == 0) ? "Venceu" : "Perdeu");
+    printf("\n\nVoce %s !", (venceu) ? "Venceu" : "Perdeu");
 
     jg->resultado = !venceu;
 }
@@ -133,7 +132,25 @@ void printarJogo(JogoDaForca *jg) {
 }
 
 void salvarArquivoDeResultadoBinario(JogoDaForca jg, FILE **arquivo) {
-    fwrite(&jg, sizeof(Forca), 1, *arquivo);
+    fwrite(&jg, sizeof(JogoDaForca), 1, *arquivo);
+}
+
+void exibirResultados(FILE *arquivo) {
+    rewind(arquivo);
+    JogoDaForca jogo;
+
+    while(1) {
+        fread(&jogo, sizeof(JogoDaForca), 1, arquivo);
+        if(feof(arquivo)) break;
+        printf(
+            "\nJogador: %s\npalavra: %s \nletras utilizadas: %s\nvidas: %d, resultado: %d\n\n",
+            jogo.jogador,
+            jogo.forca.palavraSecreta,
+            jogo.forca.letrasUsadas,
+            jogo.forca.vidas,
+            jogo.resultado
+        );
+    }
 }
 
 main() {
@@ -154,8 +171,15 @@ main() {
     inicializarJogo(&jg);
     iniciarJogo(&jg);
 
-    //arquivoResultados = fopen(DIR_RESULT, "ab+");
-    //salvarArquivoDeResultadoBinario(jg, &arquivoResultados);
+    arquivoResultados = fopen(DIR_RESULT, "ab+");
+    salvarArquivoDeResultadoBinario(jg, &arquivoResultados);
+
+    exibirResultados(arquivoResultados);
+
     fclose(arquivoPalavras);
-    //fclose(arquivoResultados);
+    fclose(arquivoResultados);
+    free(jg.jogador);
+    free(jg.forca.palavra);
+    free(jg.forca.palavraSecreta);
+    free(jg.forca.letrasUsadas);
 }

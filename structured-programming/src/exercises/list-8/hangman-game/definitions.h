@@ -4,6 +4,7 @@
 
 #define VIDAS               5
 #define DIR_WORDS "words.txt"
+#define DIR_RESULT "result.dat"
 
 typedef struct TForca {
     int vidas;
