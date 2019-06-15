@@ -12,11 +12,25 @@ typedef struct TASCII {
   char caractere;
 } ASCII;
 
+int totalDeRegistros(FILE* arq) {
+  ASCII asc;
+  int i;
+
+  while(1) {
+    fread(&asc, sizeof(ASCII), 1, arq);
+
+    if(feof(arq)) break;
+    
+    i++;
+  }
+
+  return i;
+}
 main() {
-    ASCII asc;
     FILE * arq;
+    int quantidade;
     char nomeArq[80];
-    int i = 0;
+
 
     printf("===> Contagem de dados no arquivo <===");
 
@@ -26,18 +40,8 @@ main() {
     //abrindo arquivo, ligação do arquivo em disco com a memória
     arq = fopen(nomeArq, "rb");
 
-
-    while(1) {
-      // lendo da disco e armazendo um ou mais registros na memória. Para mover o cursos é preciso ler
-      fread(&asc, sizeof(ASCII), 1, arq);
-
-      // Se chegar ao final do arquivo, pare
-      if(feof(arq) )break;
-
-      i++;
-    }
-
-    printf("A quantidade de registros no arquivo %s: %d", nomeArq, i);
+    quantidade = totalDeRegistros(arq);
+    printf("A quantidade de registros no arquivo %s: %d", nomeArq, quantidade);
 
     //Fecha a ligação com o arquivo no disco com a memória.
     fclose(arq);

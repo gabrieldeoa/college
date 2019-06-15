@@ -1,8 +1,6 @@
 /*
-Escreva um programa para fornecer como saída a quantidade de registros armazenados no arquivo criado pelo programa acima.
-A única informação que você, programador, dispõe é a estrutura de cada registro,
-enquanto a única informação que o usuário do programa dispõe é o nome do arquivo.
-Suponha total desconhecimento sobre quantos registros o programa acima inseriu; isso é tarefa do seu programa.
+Reescreva o programa acima, mas modifique a abordagem.
+Em vez de considerar um arquivo binário, considere um arquivo de texto.
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +12,7 @@ typedef struct TASCII {
 
 main() {
     ASCII asc;
-    FILE * arq;
+    FILE * arqTxt;
     char nomeArq[80];
     int i = 0;
 
@@ -24,15 +22,15 @@ main() {
     gets(nomeArq);
 
     //abrindo arquivo, ligação do arquivo em disco com a memória
-    arq = fopen(nomeArq, "rb");
+    arqTxt = fopen(nomeArq, "r");
 
 
     while(1) {
       // lendo da disco e armazendo um ou mais registros na memória. Para mover o cursos é preciso ler
-      fread(&asc, sizeof(ASCII), 1, arq);
+      fscanf(arqTxt, "\n%2d\t%c", &asc.codigo, &asc.caractere);
 
       // Se chegar ao final do arquivo, pare
-      if(feof(arq) )break;
+      if(feof(arqTxt) )break;
 
       i++;
     }
@@ -40,5 +38,5 @@ main() {
     printf("A quantidade de registros no arquivo %s: %d", nomeArq, i);
 
     //Fecha a ligação com o arquivo no disco com a memória.
-    fclose(arq);
+    fclose(arqTxt);
 }
