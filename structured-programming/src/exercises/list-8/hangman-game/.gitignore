@@ -1,0 +1,6 @@
+*.o
+*.c.save
+*.bin
+*.ipch
+*/.vscode
+!*.txt

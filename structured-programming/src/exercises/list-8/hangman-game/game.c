@@ -123,7 +123,7 @@ void iniciarJogo(JogoDaForca *jg) {
 
     printf("\n\nVoce %s !", (venceu) ? "Venceu" : "Perdeu");
 
-    jg->resultado = !venceu;
+    jg->resultado = venceu;
 }
 
 void printarJogo(JogoDaForca *jg) {
@@ -137,19 +137,20 @@ void salvarArquivoDeResultadoBinario(JogoDaForca jg, FILE **arquivo) {
 
 void exibirResultados(FILE *arquivo) {
     rewind(arquivo);
-    JogoDaForca jogo;
+    JogoDaForca jg;
 
     while(1) {
-        fread(&jogo, sizeof(JogoDaForca), 1, arquivo);
         if(feof(arquivo)) break;
+        fread(&jg, sizeof(JogoDaForca), 1, arquivo);
         printf(
-            "\nJogador: %s\npalavra: %s \nletras utilizadas: %s\nvidas: %d, resultado: %d\n\n",
-            jogo.jogador,
-            jogo.forca.palavraSecreta,
-            jogo.forca.letrasUsadas,
-            jogo.forca.vidas,
-            jogo.resultado
+            "\n\nJogador: %s\npalavra: %sletras utilizadas: %s\nvidas: %d\nresultado: %d",
+            jg.jogador,
+            jg.forca.palavraSecreta,
+            jg.forca.letrasUsadas,
+            jg.forca.vidas,
+            jg.resultado
         );
+
     }
 }
 
@@ -176,10 +177,10 @@ main() {
 
     exibirResultados(arquivoResultados);
 
-    fclose(arquivoPalavras);
-    fclose(arquivoResultados);
     free(jg.jogador);
     free(jg.forca.palavra);
     free(jg.forca.palavraSecreta);
     free(jg.forca.letrasUsadas);
+    fclose(arquivoPalavras);
+    fclose(arquivoResultados);
 }
