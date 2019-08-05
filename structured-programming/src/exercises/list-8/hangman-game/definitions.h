@@ -8,13 +8,13 @@
 
 typedef struct TForca {
     int vidas;
-    char * palavraSecreta;
-    char * palavra;
-    char * letrasUsadas;
+    char palavraSecreta[80];
+    char palavra[80];
+    char letrasUsadas[26];
 } Forca;
 
 typedef struct TJogoDaForca {
-    char * jogador;
+    char jogador[80];
     int resultado;
     Forca forca;
 } JogoDaForca;

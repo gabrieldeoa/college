@@ -22,6 +22,7 @@ void strCpy(char * t1, char * t2 ) {
     for(i = 0; t2[i] != '\0'; i++) {
         t1[i] = t2[i];
     }
+    t1[i] = t2[i];
 }
 
 void atualizarLetrasUtilizadas(char * t1, char l) {
@@ -135,13 +136,13 @@ void salvarArquivoDeResultadoBinario(JogoDaForca jg, FILE **arquivo) {
     fwrite(&jg, sizeof(JogoDaForca), 1, *arquivo);
 }
 
-void exibirResultados(FILE *arquivo) {
-    rewind(arquivo);
+void exibirResultados(FILE **arquivo) {
+    rewind(*arquivo);
     JogoDaForca jg;
 
     while(1) {
-        if(feof(arquivo)) break;
-        fread(&jg, sizeof(JogoDaForca), 1, arquivo);
+        if(feof(*arquivo)) break;
+        fread(&jg, sizeof(JogoDaForca), 1, *arquivo);
         printf(
             "\n\nJogador: %s\npalavra: %sletras utilizadas: %s\nvidas: %d\nresultado: %d",
             jg.jogador,
@@ -158,10 +159,6 @@ main() {
     FILE * arquivoPalavras, *arquivoResultados;
 
     JogoDaForca jg;
-    jg.jogador = (char *)malloc(sizeof(char));
-    jg.forca.palavra = (char *)malloc(sizeof(char));
-    jg.forca.palavraSecreta = (char *)malloc(sizeof(char));
-    jg.forca.letrasUsadas = (char *)malloc(sizeof(char));
 
     printf("Nome do Jogador: ");
     gets(jg.jogador);
@@ -175,12 +172,8 @@ main() {
     arquivoResultados = fopen(DIR_RESULT, "ab+");
     salvarArquivoDeResultadoBinario(jg, &arquivoResultados);
 
-    exibirResultados(arquivoResultados);
+    exibirResultados(&arquivoResultados);
 
-    free(jg.jogador);
-    free(jg.forca.palavra);
-    free(jg.forca.palavraSecreta);
-    free(jg.forca.letrasUsadas);
     fclose(arquivoPalavras);
     fclose(arquivoResultados);
 }
