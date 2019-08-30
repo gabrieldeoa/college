@@ -11,25 +11,55 @@
 
             <label for="name">Nome: </label>
             <input id="name" name="name" size="50" maxlenght="50" type="text">
-            <br>
-            <br>
+            <br><br>
 
             <label for="address">Endereço: </label>
             <input id="adress" name="adress" size="50" maxlenght="50" type="text">
-            <br>
-            <br>
+            <br><br>
 
-            <label for="city">Senha: </label>
+            <label for="password">Senha: </label>
             <input id="password" name="password" size="20" maxlenght="20" type="password">
-            <br>
+            <br><br>
+
             <input type="checkbox" id="public-curriculum" name="public-curriculum" checked>
             <label for="public-curriculum">Quero que meu currículo seja público</label>
             
-            <br>
+            <br><br>
             <label>Sexo: </label>
-            <input type="radio" name="sexo" id="masculino">
+            <input type="radio" name="gender" id="masculino">
             <label for="masculino">Masculino</label>
-            <input type="radio" name="sexo" id="feminino">
+            <input type="radio" name="gender" id="feminino">
+            <label for="feminino">Feminino</label>
+
+            <br><br>
+            <label for="scholarity">Escolaridade:</label>
+            <select name="scholarity" id="scholarity">
+                <option value="ensino-fundamental">Ensino fundamental</option>
+                <option value="ensino-fundamental-incompleto">Ensino fundamental incompleto</option>
+                <option value="ensino-medio">Ensino médio</option>
+                <option value="ensino-medio-incompleto">Ensino médio incompleto</option>
+                <option selected value="ensino-superior">Superior</option>
+                <option value="ensino-superior-incompleto">Ensino superior incompleto</option>
+            </select>
+
+            <br><br>
+            <label for="tec">Tecnologia: </label>
+            <select size="3" name="tec" id="tec">
+                <option value="php">PHP </option>
+                <option value="html">HTML </option>
+                <option value="js">JavaScript </option>
+            </select>
+
+            <br><br>
+            <label for="obs">Observações:</label>
+            <br>
+            <textarea rows="10" cols="60">Digite aqui suas observações ...</textarea>
+
+            <br><br>
+            <div id="btns">
+                <input type="submit" id="registerBtn" name="registerBtn" value="Enviar">
+                <input type="reset" id="resetBtn" name="resetBtn" value="Limpar">
+            </div>
         </form>
     </body>
 </html>
