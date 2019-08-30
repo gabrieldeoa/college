@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Formulário 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1>Currículo ON-Line</h1>
+        <form method="post" action="curriculum.php">
+
+            <label for="name">Nome: </label>
+            <input id="name" name="name" size="50" maxlenght="50" type="text">
+            <br>
+            <br>
+
+            <label for="address">Endereço: </label>
+            <input id="adress" name="adress" size="50" maxlenght="50" type="text">
+            <br>
+            <br>
+
+            <label for="city">Senha: </label>
+            <input id="password" name="password" size="20" maxlenght="20" type="password">
+            <br>
+            <input type="checkbox" id="public-curriculum" name="public-curriculum" checked>
+            <label for="public-curriculum">Quero que meu currículo seja público</label>
+            
+            <br>
+            <label>Sexo: </label>
+            <input type="radio" name="sexo" id="masculino">
+            <label for="masculino">Masculino</label>
+            <input type="radio" name="sexo" id="feminino">
+        </form>
+    </body>
+</html>
