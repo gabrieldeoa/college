@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LISTA_NAO_ALOCADA = -1;
-#define ELEMENTO_NAO_EXISTENTE = -2;
-#define ELEMENTO_EXISTENTE = -3;
-#define LISTA_CHEIA = -4;
-#define LISTA_VAZIA = -5;
-#define SUCESSO = -6;
+#define LISTA_NAO_ALOCADA  -1
+#define ELEMENTO_NAO_EXISTENTE  -2
+#define ELEMENTO_EXISTENTE -3
+#define LISTA_CHEIA -4
+#define LISTA_VAZIA -5
+#define SUCESSO -6
 
 int** criarLista(int tam) {
     int **lista, i;
@@ -65,8 +65,6 @@ int inserirElemento(int elemento, int** lista, int tam) {
     *(lista[totalElementos]) = elemento;
 
     return SUCESSO;
-
-
 }
 
 int removerElemento(int elemento, int** lista, int tam) {
@@ -120,7 +118,7 @@ int** lerLista(int tam) {
     return lista;
 }
 
-void destruirFila(int** lista, int tam) {
+void destruirLista(int** lista, int tam) {
     int i;
 
     for(i=0; i < tam; i++)
