@@ -11,119 +11,128 @@
 #define LISTA_VAZIA -5
 #define SUCESSO -6
 
-int** criarLista(int tam) {
-    int **lista, i;
+/*
+    Biblioteca para se trabalhar com lista sequencial de inteiros.
+    OBS: Anotações somente para ajudar a entender e lembrar o passo-a-passo do algoritmo.
+*/
 
+/*
+    REPRESENTACAO
+    <TIPO> ** <INDENTIFICADOR>
+    int **lista;
+*/
+
+// CRIACAO DE LISTA - dado um tamanho parametrizado retorna uma lista
+int** lista_criar(int tam) {
+    int **lista;
     lista = calloc(tam, sizeof(int*[tam]));
-
     return lista;
 }
 
-int tamanhoDaLista(int **lista, int tam) {
+// CONTAGEM DE ELEMENTOS - dado uma lista e seu tamanho retorna a qtd de elementos validos na mesma.
+int lista_numero_elementos(int **lista, int tam) {
     int i;
 
-    if(lista == NULL)
-        return LISTA_NAO_ALOCADA;
+    if(lista == NULL) return LISTA_NAO_ALOCADA;
 
-    for(i=0; i < tam; i++)
+    for(i = 0; i < tam; i++)
         if(lista[i] == NULL)
             return i;
     
     return tam;
 }
 
-int posicaoDoElemento(int elemento, int** lista, int tam) {
-    int i, totalElementos;
+// OBTER POSICAO DE UM ELEMENTO - dado uma elemento, a lista e o tamanho da mesma retorna o posicao do elemento.
+int lista_posicao_elemento(int elem, int **lista, int tam) {
+    int i, num_elems;
 
-    if(lista == NULL)
-        return LISTA_NAO_ALOCADA;
+    num_elems = lista_numero_elementos(lista, tam);
 
-    totalElementos = tamanhoDaLista(lista, tam);
+    if(lista == NULL) return LISTA_NAO_ALOCADA;
 
-    for(i=0; i < totalElementos; i++)
-        if(*(lista[i]) == elemento)
+    for(i = 0; i < num_elems; i++)
+        if(*(lista[i]) == elem)
             return i;
     
     return ELEMENTO_NAO_EXISTENTE;
 }
 
-int inserirElemento(int elemento, int** lista, int tam) {
-    int i, totalElementos, posicaoElemento;
+// OBTER UM ELEMENTO NA LISTA - dada a posicao e a lista retorna o elemento(seu conteudo)
+int lista_obter_elemento(int pos, int** lista) {
+    return *(lista[pos]);
+}
 
-    totalElementos = tamanhoDaLista(lista, tam);
+//INSERIR UM ELEMENTO NA LISTA - dado o elemento, a lista e seu tamanho insere um elemento e retorna flag de sucesso
+int lista_inserir(int elem, int** lista, int tam) {
+    int i, num_elems;
+    num_elems = lista_numero_elementos(lista, tam);
 
-    if(totalElementos >= tam )
-        return LISTA_CHEIA;
-    
-    posicaoElemento = posicaoDoElemento(elemento, lista, tam);
+    if(num_elems >= tam) return LISTA_CHEIA;
 
-    if(posicaoElemento != ELEMENTO_NAO_EXISTENTE)
-        return ELEMENTO_EXISTENTE;
-    
-    lista[totalElementos] = malloc(sizeof(int));
+    if(lista_posicao_elemento(elem, lista, tam) != ELEMENTO_NAO_EXISTENTE) return ELEMENTO_EXISTENTE;
 
-    *(lista[totalElementos]) = elemento;
+    lista[num_elems] = malloc(sizeof(int));
+    *(lista[num_elems]) = elem;
 
     return SUCESSO;
 }
 
-int removerElemento(int elemento, int** lista, int tam) {
-    int i, posicao, totalElementos;
+//REMOVER ELEMENTO - dado o elemento, a lista e seu tamanho remove o elemento e retorna flag de sucesso
+int lista_remover(int elem, int** lista, int tam) {
+    int i, num_elems, pos;
 
-    totalElementos = tamanhoDaLista(lista, tam);
-    posicao = posicaoDoElemento(elemento, lista, tam);
+    num_elems = lista_numero_elementos(lista, tam);
 
-    if(totalElementos <= 0)
-        return LISTA_VAZIA;
+    pos = lista_posicao_elemento(elem, lista, tam);
+    
+    if(num_elems <= 0) return LISTA_VAZIA;
+    
+    if(pos == ELEMENTO_NAO_EXISTENTE) return ELEMENTO_NAO_EXISTENTE;
 
-    if(posicao == ELEMENTO_NAO_EXISTENTE)
-        return ELEMENTO_NAO_EXISTENTE;
+    free(lista[pos]); // exclusao
 
-    free(lista[posicao]);
-
-    for(i = posicao; i < totalElementos-1; i++)
+    // realocando elementos depois da exclusao
+    for(i = pos; i < num_elems; i++)
         lista[i] = lista[i + 1];
     
     lista[i] = NULL;
 
-    return SUCESSO;
 }
 
-void exibirLista(int **lista, int tam) {
+// EXIBIR UMA LISTA - dado a lista printa-se seu conteudo
+void lista_exibir(int **lista, int tam) {
     int i;
-
-    for(i = 0; i < tam; i++)
-        if(lista[i] != NULL)
+    
+    for(i = 0; i < tam; i++) {
+        if(lista[i] != NULL) 
             printf("%d|", *(lista[i]));
         else
             printf("N|");
+    }
     printf("\n");
 }
 
-int** lerLista(int tam) {
-    int i, elemento, ** lista;
+// LER UMA LISTA - dado um tamanho maximo da lista e a quantidade de elementos que espera-se ler retorna a lista preenchida
+int** lista_ler(int tam, int qtd_elems) {
+    int i, elem, **lista;
 
-    lista = criarLista(tam);
+    lista = lista_criar(tam);
 
-    for(i=0; i < tam; i++) {
-        printf("LISTA[%d] = ", i);
-        scanf("%d", &elemento);
-
-        if(elemento == '\0')
-            return lista;
-        
-        inserirElemento(elemento, lista, tam);
+    for(i = 0; i < qtd_elems || i < tam; i++) {
+        printf("Lista[%d]: ", i);
+        scanf("%d", &elem);
+        lista_inserir(elem, lista, tam);
     }
-    
+
     return lista;
 }
 
-void destruirLista(int** lista, int tam) {
+// DESTRUIR UMA LISTA - dado a lista e seu tamanho a desaloca da memoria
+void lista_destruir(int** lista, int tam) {
     int i;
-
-    for(i=0; i < tam; i++)
+    
+    for(i = 0; i < tam; i++)
         free(lista[i]);
-
     free(lista);
 }
 
