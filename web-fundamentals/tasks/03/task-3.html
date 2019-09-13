@@ -33,7 +33,9 @@
             }
             
             .logo {
-                padding: 10px;
+                padding: 20px;
+                min-width: 100px;
+                height: auto;
             }
             
             .titulo {
@@ -47,7 +49,7 @@
                 margin: 0 auto;
             }
             
-            .curso {
+            #curso {
                 display: flex;
                 font-size: 1.1em;
                 justify-content: center;
@@ -159,15 +161,15 @@
     <body>
         <header class="header">
             <div class="topo">
-                <a class="logo" href="http://www.cefet-rj.br/index.php" target="blank">
-                    <img src="./logo.png" alt="logo_cefet.png">
+                <a href="http://www.cefet-rj.br/index.php" target="blank">
+                    <img class="logo" src="./logo.png" alt="logo_cefet.png">
                 </a>
                 <h1 class="titulo">
                         Centro Fed. De Educ. Tecnologica Celso Suckow Da Fonseca RJ
                 </h1>
             </div>
 
-            <div class="curso">
+            <div id="curso">
                 <span>
                     Curso:
                     <strong>GSISNF - NF - BACHARELADO EM SISTEMAS DE INFORMAÇÃO</strong>
