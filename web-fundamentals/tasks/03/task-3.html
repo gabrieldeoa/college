@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Histórico Escolar</title>
+        <meta charset="utf-8" />
+        <meta name="description" content="Histórico Escolar" />
+        <meta name="keywords" content="histórico, escolar, estudos" />
+        <meta name="author" content="Gabriel de O. Araujo" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Rajdhani', sans-serif;
+                display: flex;
+                flex-direction: column;
+                min-width: 1024px;
+                max-width: 100%;
+                margin: 0;
+                font-size: 1.2em;
+            }
+            
+            .header,
+            .footer {
+                color: #fff;
+                background-color: #2f69bc;
+                padding: 10px 0;
+            }
+            
+            .topo {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .logo {
+                padding: 10px;
+            }
+            
+            .titulo {
+                display: flex;
+                font-size: 2.3em;
+                font-weight: 700;
+                justify-content: center;
+                align-items: center;
+                align-self: center;
+                box-sizing: border-box;
+                margin: 0 auto;
+            }
+            
+            .curso {
+                display: flex;
+                font-size: 1.1em;
+                justify-content: center;
+            }
+            
+            .conteudo,
+            .conteudo section,
+            .footer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .sub-titulo {
+                padding-bottom: 5px;
+                border-bottom: 1px solid #2f69bc;
+            }
+            
+            .conteudo ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .conteudo .item {
+                list-style: none;
+                display: flex;
+                justify-content: space-between;
+                margin: 5px;
+            }
+            
+            .informacoes-aluno,
+            .historico-escolar {
+                margin-bottom: 20px;
+                max-width: 100%;
+                width: 1280px;
+            }
+            
+            .historico-semestre {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            
+            .historico-semestre caption {
+                font-weight: 700;
+                font-size: 1.4em;
+                padding-bottom: 5px;
+            }
+            
+            .historico-semestre th,
+            tfoot tr td {
+                background-color: #2f69bc;
+                color: #fff;
+            }
+            
+            .historico-semestre tr:nth-child(odd) {
+                background-color: #fff;
+            }
+            
+            .historico-semestre tr:nth-child(even) {
+                background-color: #ccc;
+            }
+            
+            .historico-semestre tr:nth-child(odd):hover,
+            .historico-semestre tr:nth-child(even):hover {
+                font-weight: bold;
+            }
+            
+            .historico-total td {
+                margin-top: 10px;
+                color: #2f69bc;
+                background-color: #fff;
+            }
+            
+            .footer .sub-titulo {
+                margin: 15px auto;
+            }
+            
+            .footer .list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .footer .list-item {
+                list-style: none;
+                margin: 0 15px;
+            }
+            
+            .footer .list-item strong {
+                padding-right: 10px;
+            }
+            
+            .footer .link {
+                color: #fff;
+                text-decoration: none;
+            }
+            
+            .footer .link:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <div class="topo">
+                <a class="logo" href="http://www.cefet-rj.br/index.php" target="blank">
+                    <img src="./logo.png" alt="logo_cefet.png">
+                </a>
+                <h1 class="titulo">
+                        Centro Fed. De Educ. Tecnologica Celso Suckow Da Fonseca RJ
+                </h1>
+            </div>
+
+            <div class="curso">
+                <span>
+                    Curso:
+                    <strong>GSISNF - NF - BACHARELADO EM SISTEMAS DE INFORMAÇÃO</strong>
+                </span>
+            </div>
+        </header>
+        <main class="conteudo">
+            <section class="informacoes-aluno">
+                <h2 class="sub-titulo">Informações do Aluno</h2>
+                <ul>
+                    <li class="item"><strong>Matricula: </strong> <span>1820520GSIS</span></li>
+                    <li class="item"><strong>Período Atual: </strong> <span>2º Semestre</span></li>
+                    <li class="item"><strong>Nome Aluno:</strong> <span> GABRIEL DE OLIVEIRA ARAUJO</span></li>
+                    <li class="item"><strong>CPF: </strong> <span>164.941.557-58</span></li>
+                    <li class="item"><strong>Nascimento: </strong> <span>05/09/1994</span></li>
+                </ul>
+            </section>
+            <section class="historico-escolar">
+                <h2 class="sub-titulo">Histórico Escolar</h2>
+                <table class="historico-semestre">
+                    <caption>
+                        <strong> 
+                            Período: 2º Semestre de 2018
+                        </strong>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome Disciplina/Atividade</th>
+                            <th>CR.</th>
+                            <th>C.H</th>
+                            <th>Média</th>
+                            <th>Frequência</th>
+                            <th>Situação</th>
+                            <th>Local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GSI9101NF</td>
+                            <td>Construção de Algoritmos</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td>10,00</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9102NF</td>
+                            <td>Arquitetura de computadores</td>
+                            <td>5</td>
+                            <td>90</td>
+                            <td>9,00</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9103NF</td>
+                            <td>Fundamentos de Sistemas de Informação</td>
+                            <td>2</td>
+                            <td>36</td>
+                            <td>9,20</td>
+                            <td>88.89</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9104NF</td>
+                            <td>Gestão de processo de negócio</td>
+                            <td>3</td>
+                            <td>54</td>
+                            <td>7,60</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9105NF</td>
+                            <td>Matemática Discreta</td>
+                            <td>6</td>
+                            <td>108</td>
+                            <td>7,60</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9106NF</td>
+                            <td>Fundamentos de Administração</td>
+                            <td>2</td>
+                            <td>36</td>
+                            <td>9,80</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9107NF</td>
+                            <td>Fundamentos de Matemática</td>
+                            <td>2</td>
+                            <td>36</td>
+                            <td>6,60</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Total Créditos/Carga Horária obtidos no Período:</strong>
+                            </td>
+                            <td>24</td>
+                            <td>450</td>
+                            <td colspan="3">
+                                <strong>Coeficiente de Rendimento</strong>
+                            </td>
+                            <td>8,5200</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <table class="historico-semestre">
+                    <caption>
+                        <strong> 
+                            Período: 1º Semestre de 2019
+                        </strong>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome Disciplina/Atividade</th>
+                            <th>CR.</th>
+                            <th>C.H</th>
+                            <th>Média</th>
+                            <th>Frequência</th>
+                            <th>Situação</th>
+                            <th>Local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GSI9201NF</td>
+                            <td>Programação Estruturada</td>
+                            <td>5</td>
+                            <td>108</td>
+                            <td>8,70</td>
+                            <td>97,22</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9202NF</td>
+                            <td>Fundamentos de Redes</td>
+                            <td>5</td>
+                            <td>90</td>
+                            <td>9,60</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9203NF</td>
+                            <td>Engenharia de Requisitos</td>
+                            <td>3</td>
+                            <td>54</td>
+                            <td>9,50</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9204NF</td>
+                            <td>Modelagem de Dados</td>
+                            <td>4</td>
+                            <td>72</td>
+                            <td>9,00</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9206NF</td>
+                            <td>Metodologia e Pesquisa Científica</td>
+                            <td>2</td>
+                            <td>36</td>
+                            <td>9,50</td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Total Créditos/Carga Horária obtidos no Período:</strong>
+                            </td>
+                            <td>19</td>
+                            <td>360</td>
+                            <td colspan="3">
+                                <strong>Coeficiente de Rendimento</strong>
+                            </td>
+                            <td>9.2100</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <table class="historico-semestre">
+                    <caption>
+                        <strong> 
+                            Período: 2º Semestre de 2019
+                        </strong>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Nome Disciplina/Atividade</th>
+                            <th>CR.</th>
+                            <th>C.H</th>
+                            <th>Média</th>
+                            <th>Frequência</th>
+                            <th>Situação</th>
+                            <th>Local</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GSI9301NF</td>
+                            <td>Programação orientada a Objetos</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td></td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9302NF</td>
+                            <td>Fundamentos da Web</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td></td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9303NF</td>
+                            <td>Algoritmos e Estrutura de Dados</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td></td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9304NF</td>
+                            <td>Análise e projeto de Sistemas</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td></td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>GSI9305NF</td>
+                            <td>Banco de Dados I</td>
+                            <td>4</td>
+                            <td>90</td>
+                            <td></td>
+                            <td>100,00</td>
+                            <td>Aprovado</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Total Créditos/Carga Horária obtidos no Período:</strong>
+                            </td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td colspan="3">
+                                <strong>Coeficiente de Rendimento</strong>
+                            </td>
+                            <td>0,0000</td>
+                        </tr>
+                        <tr class="historico-total">
+                            <td colspan="2">
+                                <strong>Total Geral Créditos/Carga Horária obtidos no Período:</strong>
+                            </td>
+                            <td>43</td>
+                            <td>810</td>
+                            <td colspan="3">
+                                <strong>Coeficiente de Rendimento Geral</strong>
+                            </td>
+                            <td>8,8200</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </main>
+        <footer class="footer">
+            <h2 class="sub-titulo">Contato</h2>
+            <span>Caso ainda fique alguma dúvida contate-nos:</span>
+            <ul class="list">
+                <li class="list-item">
+                    <strong>Site:</strong>
+                    <a class="link" href="http://alunos.cefet-rj.br" target="blank">
+                            Portal do Aluno
+                        </a>
+                </li>
+                <li class="list-item">
+                    <strong>Fixo: </strong>2519-8905</li>
+                </li>
+                <li class="list-item">
+                    <strong>e-mail: </strong>secretariacefetnf@gmail.com
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>
