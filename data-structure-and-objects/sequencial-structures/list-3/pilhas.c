@@ -36,16 +36,12 @@ int pilha_obter_elemento(int pos , pilha p ) {
     return p.elementos[ pos ];
 }
 
-int pilha_obter_elemento ( int pos , pilha p ) {
-    return p.elementos[ pos ];
-}
-
 int pilha_inserir(int elem, pilha*p){
     int i, num_elems;
     num_elems = pilha_nnumero_elementos(*p);
     if(num_elems >= p->tamanho)
         return PILHA_CHEIA;
-    if(pilha_posicao_elemtno(elem, *p) != ELEMENTO_NAO_EXISTENTE)
+    if(pilha_posicao_elemento(elem, *p) != ELEMENTO_NAO_EXISTENTE)
         return ELEMENTO_EXISTENTE;
 
     p->elementos[num_elems] = elem;

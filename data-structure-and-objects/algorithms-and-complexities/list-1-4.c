@@ -74,7 +74,7 @@ int buscarElementoRecursivo(int vetor[],int elemento, int inicio, int fim) {
 
 int main() {
     const int TAMANHO = 10;
-    int elemento = 10;
+    int elemento = 2;
     int v[TAMANHO];
 
     preencheVetor(v, TAMANHO);

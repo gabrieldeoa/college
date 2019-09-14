@@ -118,12 +118,11 @@ int** lista_ler(int tam, int qtd_elems) {
 
     lista = lista_criar(tam);
 
-    for(i = 0; i < qtd_elems || i < tam; i++) {
+    for(i = 0; i < qtd_elems && i < tam; i++) {
         printf("Lista[%d]: ", i);
         scanf("%d", &elem);
         lista_inserir(elem, lista, tam);
     }
-
     return lista;
 }
 
