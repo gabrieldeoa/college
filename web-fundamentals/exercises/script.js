@@ -10,7 +10,6 @@ const requestPokeInfo = (url, name) => {
 }
 
 const createCard = () => {
-    console.table(pokemon.types)
     return `
         <div class="pokemon-picture">
             <img src="${pokemon.sprites.front_default}" alt="Sprite of ${pokemon.name}">
@@ -19,7 +18,8 @@ const createCard = () => {
             <li class="name"><strong>Nome:</strong>${pokemon.name}</li>
             <li class="number"><strong>Nº</strong> ${pokemon.id}</li>
             <li class="type"><strong>Tipo:</strong> ${pokemon.types.map(item => item.type.name).toString()}</li>
-            <li class="skill"><strong>Habilidades:</strong> ${pokemon.moves.map(item => `<span>${item.move.name}</span>`)}</li>
+            <li class="skills"><strong>Habilidades:</strong> ${pokemon.abilities.map(item => `<span>${item.ability.name}</span>`)}</li>
+            <li class="moves"><strong>Movimentos:</strong> ${pokemon.moves.map(item => `<span>${item.move.name}</span>`)}</li>
             <li class="weight"><strong>Peso:</strong> ${pokemon.weight  / 10}kg</li>
             <li class="height"><strong>Altura:</strong>${pokemon.height  / 10}m</li>
         </ul>`;

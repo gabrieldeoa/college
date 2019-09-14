@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .estatico {
+                position: static;
+                border: 3px solid red;
+            }
+            .relativo {
+                position: relative;
+                left: 70px;
+                top: -20px;
+                width: 400px;
+                height: 200px;
+                border: 3px solid blue;
+            }
+            .fixo {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 200px;
+                height: 200px;
+                border: 3px solid green;
+            }
+            .absoluto {
+                position: absolute;
+                top: 80px;
+                right: 0;
+                width: 200px;
+                height: 100px;
+                border: 3px solid orange;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="estatico">Estatico</div>
+        <div class="relativo">Relativo
+            <div class="absoluto">Absoluto</div>
+        </div>
+        <div class="fixo">Fixo</div>
+    
+    </body>
+</html>
