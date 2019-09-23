@@ -3,8 +3,7 @@
 #define ELEMENTO_EXISTENTE -3
 #define PILHA_VAZIA -4
 #define PILHA_NAO_ALOCADA -5
-#define SUCESSO -10
-
+#define SUCESSO -6
 
 typedef struct {
     int * elementos;

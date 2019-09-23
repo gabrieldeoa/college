@@ -30,25 +30,27 @@ int lista_numero_elementos(int **lista, int tam) {
 int lista_posicao_elemento(int elemento, int **lista, int tam, int ordenada) {
     int i, num_elems, inicio, fim, posicao;
     num_elems = lista_numero_elementos(lista, tam);
+    inicio = 0;
+    fim = num_elems -1;
+    posicao = (inicio+fim)/2;
 
     if(lista == NULL) return LISTA_NAO_ALOCADA;
 
-    if(ordenada) {
-        posicao = num_elems/2;
-
-        if(elemento < 1 || elemento > tam)
+    if(ordenada == 1) {
+        if(elemento < 0 || elemento > tam)
             return ELEMENTO_NAO_EXISTENTE;
 
-        while(1) {
+        while(inicio <= fim) {
             if(*(lista[posicao]) == elemento)
                 return posicao;
 
             if(elemento > *(lista[posicao]))
-                inicio = posicao;
+                inicio = posicao = (inicio + fim + 1)/2;
             else
-                fim = posicao;
+                fim = posicao = (inicio+fim)/2;
 
-            posicao=(inicio+fim)/2;
+            if(inicio == fim)
+                return ELEMENTO_NAO_EXISTENTE;
         }
     }
     else {

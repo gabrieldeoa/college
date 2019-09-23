@@ -49,7 +49,7 @@ int pilha_cartas_posicao_elemento(Carta elem, pilha p) {
         if( sao_cartas_iguais(p.elementos[i], elem) )
             return i;
 
-    return ELEMENTO_EXISTENTE;    
+    return ELEMENTO_NAO_EXISTENTE;
 }
 
 Carta pilha_cartas_obter_elemento(int pos, pilha p) {
@@ -65,7 +65,7 @@ int pilha_cartas_inserir(Carta elem, pilha *p) {
 
     if(num_elems >= p->tamanho)
         return PILHA_CHEIA;
-    
+
     if(pos != ELEMENTO_NAO_EXISTENTE)
         return ELEMENTO_EXISTENTE;
 
@@ -131,7 +131,7 @@ void pilha_cartas_exibir(pilha p) {
 
     for(i = 0; i < num_elems; i++)
         exibir_carta(p.elementos[i]);
-    
+
     printf("\n");
 
 }
@@ -139,24 +139,24 @@ void pilha_cartas_exibir(pilha p) {
 Carta preencher_carta() {
     Carta c;
 
-    printf("Dados da Carta:\n");
-    printf("    Naipe: \n [0 - espadas, 1 - copas, 2 - paus e 3 ouros]: ");
-    scanf("%d", c.naipe);
+    printf("\nDados da Carta:\n");
+    printf("    Naipe: \n       0 - espadas, 1 - copas, 2 - paus e 3 ouros\n    : ");
+    scanf("%d", &c.naipe);
 
     printf("    Numero: \n" );
-    printf("        [0 - as, 1 - um, 2 - dois, 3 - tres 4 - quatro, 5 - cinco, 6 - seis, 7 - sete, 8 - oito, 9 - nove, 10 - dez, 11 - dama, 12 - valete ou 13 - rei: ");
-    scanf("%d", c.numero);
+    printf("    0 - as, \n    1 - um, \n    2 - dois, \n    3 - tres \n    4 - quatro, \n    5 - cinco, \n    6 - seis,\n    7 - sete, \n    8 - oito, \n    9 - nove, \n    10 - dez, \n    11 - dama, \n    12 - valete ou \n    13 - rei \n    \n: ");
+    scanf("%d", &c.numero);
 
     return c;
 }
 
-void pilha_cartas_ler(pilha *p , int tam) {
+void pilha_cartas_ler(pilha *p , int tam, int qtd_elems) {
     int i;
     Carta c;
 
     pilha_cartas_criar(p, tam);
 
-    for(i = 0; i < tam; i++) {
+    for(i = 0; i < tam && i < qtd_elems; i++) {
         c = preencher_carta();
         pilha_cartas_inserir(c, p);
     }
@@ -169,6 +169,25 @@ void pilha_cartas_destruir(pilha *p) {
 }
 
 
+int main () {
+    int tam = 1, pos;
+    Carta c;
+    pilha cartas;
 
+    pilha_cartas_ler(&cartas, tam , tam);
 
+    pilha_cartas_exibir(cartas);
 
+    printf("\nForneça um elemento carta para ser buscado: ");
+    c = preencher_carta();
+
+    pos = pilha_cartas_posicao_elemento(c, cartas);
+
+    printf("\nPosicao do elemento: %d", pos);
+
+    exibir_carta(pilha_cartas_obter_elemento(pos, cartas));
+
+    pilha_cartas_remover(&cartas);
+
+    pilha_cartas_exibir(cartas);
+}
