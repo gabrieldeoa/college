@@ -1,33 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <title>Meu Mercado Livre</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="assets/css/style.css" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <h1>Meu Mercado Livre</h1>
-            <div class="search">
-                <input type="text" id="search">
-                <button id="search-btn">Clicar</button>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Meu Mercado Livre" />
+    <meta name="keywords" content="mercado, Livre, meu" />
+    <meta name="author" content="Gabriel de O. Araujo" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Meu Mercado Livre</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <div class="container">
+        <a href="#" class="navbar-brand">Meu Mercado Livre</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+
+          <ul class="navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Categorias
+              </a>
+
+              <ul id="categories-list" class="dropdown-menu"></ul>
+
+            </li>
+          </ul>
+        </div> <!-- fim .collapse -->
+      </div> <!-- fim .container -->
+    </nav>
+
+    <main>  
+      <section class="jumbotron-fluid main-banner"></section>
+
+      <section class="container search">
+        <div class="search-bar">
+
+            <form id="form-search" class="input-group">
+                <input type="search" class="form-control input-search"  placeholder="Busque os melhores produtos">
+                <span class="input-group-btn">
+                  <button id="search-btn" class="btn btn-dark">Buscar</button>
+                </span>
+            </form>
+
+            <div class="search-info form-group row text-center">
+              <div class="col-xs-12 col-sm-2 col-md-2 form-inline numbers">
+                  <label for="qty-results">Buscar:  </label>
+                  <select class="form-control" id="qty-results">
+                    <option selected>5</option>
+                    <option>10</option>
+                    <option>15</option>
+                    <option>20</option>
+                    <option>25</option>
+                    <option>30</option>
+                    <option>35</option>
+                    <option>40</option>
+                    <option>45</option>
+                    <option>50</option>
+                  </select>
+              </div>
+
+              <div class="info col-xs-12 col-sm-10 col-md-10 align-self-center">
+                  <span class="query"></span> teve <span class="qty"></span > resultado(s) encontrado(s).
+              </div>
             </div>
-        </header>
+        </div>
+        
+        <ul class="row products-list"></ul>
 
-        <main>
-            <section class="search-result">
-                <ul class="products-list">
-                    
-                </ul>
-            </section>
-        </main>
+      </section><!-- fim .container -->
 
-        <footer>
-            FOOTER
-        </footer>
+      <section class="container cards categories-products pt-4 pb-4">
+        <h3 class="text-center mb-3 title">Produtos Selecionados</h3>
 
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/main.js" ></script>
-    </body>
+        <h4 class="text-left mb-3 sub-title">Games</h4>
+        <div class="category-games row"></div>
+
+        <h4 class="text-left mb-3 sub-title">Informática</h4>
+        <div class="category-info row"></div>
+
+        <h4 class="text-left mb-3 sub-title">Telefonia</h4>
+        <div class="category-cell row"></div>
+
+
+      </section><!-- fim .planos -->
+    </main>
+
+    <footer class="container-fluid text-center">
+      <div class="row">
+        <span class="col-xs-12 col-sm-6 license">
+          © 2019 Todos os Direitos Reservados
+        </span>
+
+        <span class="col-xs-12 col-sm-6 author">
+            <a href="https://github.com/gabrieldeoa">Gabriel de O. Araujo</a>
+        </span>
+      </div>
+    </footer>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

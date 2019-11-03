@@ -1,0 +1,250 @@
+body {
+  font-size: 1em;;
+}
+
+/*** COMMON ***/
+.grow { transition: all .2s ease-in-out; }
+
+.grow:hover { transform: scale(1.1); }
+
+.without-results {
+  list-style: none;
+  text-align: center;
+  font-weight: bold;
+}
+
+/*** MAIN ***/
+/* banner */
+.main-banner {
+  background-image: url(../imgs/main-background-ml.png);
+  background-size: cover;
+  background-position: center;
+  min-height: 150px;
+  border: 1px solid #dfdfdf;
+  margin-bottom: 30px;
+}
+
+/* busca */
+.search {
+  margin-bottom: 30px;
+}
+.search-bar .input-search, .search-bar .btn {
+  border-radius: 1em;
+  padding: 10px;
+}
+
+.search-bar .input-search::-webkit-input-placeholder {
+  color: #777;
+}
+
+.search-bar .input-search:-moz-placeholder { /* Firefox 18- */
+  color: #777;  
+}
+
+.search-bar .input-search::-moz-placeholder {  /* Firefox 19+ */
+  color: #777;  
+}
+
+.search-bar .input-search:-ms-input-placeholder {  
+  color: #777;  
+}
+
+.search-bar .btn {
+  font-weight: 700;
+}
+
+.search-info {
+  padding: 30px 10px;
+}
+
+.search-info .info {
+  font-style: italic;
+  text-align: right;
+  color:rgb(52, 58, 64);
+  vertical-align: baseline;
+  display: none;
+}
+
+.search-info  #qty-results{
+  margin-left: 5px;
+}
+
+.search-info .numbers {
+  margin-bottom: 15px;
+}
+
+
+.search-info  .query,
+.search-info  .qty-results{
+  font-weight: bold;
+}
+
+/* lista de produtos */
+
+.products-list .item {
+  position: relative;
+  list-style: none;
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px 10px;
+}
+
+.products-list .item a {
+  color: #000;
+  text-decoration: none;
+
+}
+
+.products-list .item span {
+  color: #000;
+  display: block;
+  margin-top: 15px;
+}
+
+.products-list .item .price{
+  font-weight: bold;
+}
+
+.products-list .item .original-price{
+  font-size: 0.9em;
+  color: #777;
+  font-weight: bold;
+  text-decoration: line-through;
+}
+
+.products-list .item .condition{
+  margin-top: 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 2px 10px;
+  background-color: #ffe831;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+
+
+.products-list .item .shipping{
+  display: table;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: 15px auto 0;
+  padding: 2px 10px;
+  color:#69bb7b;
+  border: 1px solid #69bb7b;
+}
+.products-list .item:hover .shipping {
+  color:#FFF;
+  background-color: #69bb7b;
+
+}
+
+/* cards de produtos */
+.cards {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 1px solid #dfdfdf;
+}
+
+.cards .product-card {
+  margin-bottom: 15px;
+}
+
+.cards a{
+  color: #000;
+  text-decoration: none;
+}
+
+.cards .title{
+  color: #1e2e7a;
+  letter-spacing: 2px;
+  padding: 5px;
+}
+
+.cards .sub-title{
+  margin-top: 30px;
+}
+
+.cards .card-header {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.cards .card-body .container-price,
+.cards .card-body .container-stock{
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.cards .card-body .price,
+.cards .card-body .installments,
+.cards .card-body .sold,
+.cards .card-body .stock {
+  flex: 1;
+}
+
+.cards .card-body .sold,
+.cards .card-body .stock,
+.cards .card-body .locate {
+  font-size: 0.9em;
+}
+
+/*** FOOTER ***/
+
+footer {
+  color: #fff;
+  background-color: #343a40;
+  padding: 20px 0;
+  border-top: 1px solid black;
+}
+
+footer .license{
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+footer .author a{
+  color: #FFF;
+  font-weight: bold;
+}
+
+/***MEDIA QUERIES***/
+
+/* telas menores */
+@media only screen and (min-width: 600px) {
+	.main-banner  {
+    min-height: 250px;
+  }
+}
+
+/* telas medias */
+@media only screen and (min-width: 768px) {	
+  .main-banner  {
+    min-height: 350px; 
+  }
+
+  footer .license{
+    margin-bottom: 0;
+  }
+}
+
+/* telas grandes */
+@media only screen and (min-width: 900px) {	
+  .main-banner  {
+    min-height: 500px; 
+  }
+
+  .cards .card-body .container-price,
+  .cards .card-body .container-stock,
+  .cards .card-body .price,
+  .cards .card-body .installments,
+  .cards .card-body .sold,
+  .cards .card-body .stock {
+    display: block;
+    margin-bottom: 5px;
+  }
+}
