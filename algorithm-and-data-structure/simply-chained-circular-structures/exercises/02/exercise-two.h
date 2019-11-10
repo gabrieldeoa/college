@@ -1,14 +1,13 @@
 #include "../../list/list.h"
 
-void lista_remover_elementos(lista listaUm, lista listaDois) {
-    no_enc *noUm, *noDois;
+void lista_remover_elementos(lista *listaUm, lista listaDois) {
+    no_enc *no;
 
-    noUm = listaUm;
-    noDois = listaDois;
+    no = listaDois;
 
     do {
-        lista_remover(noDois->elemento, &listaUm);
-        noDois = noDois->proximo;
-    } while(noDois != listaDois);
+        lista_remover(no->elemento, listaUm);
+        no = no->proximo;
+    } while(no != listaDois);
 
 }

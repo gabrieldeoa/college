@@ -1,5 +1,5 @@
-#ifndef LISTA_DUPLAMENTE_ENCADEADA_INTEIRO
-#define LISTA_DUPLAMENTE_ENCADEADA_INTEIRO
+#ifndef LISTA_DUPLAMENTE_ENCADEADA_CIRCULAR_INTEIRO
+#define LISTA_DUPLAMENTE_ENCADEADA_CIRCULAR_INTEIRO
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +13,7 @@
 /*** Estrutura ***/
 typedef struct _no_dup_enc no_dup_enc;
 
-typedef struct no_dup_enc* lista;
+typedef struct _no_dup_enc* lista;
 
 typedef struct _no_dup_enc {
     int elemento;
@@ -36,10 +36,13 @@ int lista_numero_elementos(lista lista) {
     int tamanho = 0;
     no_dup_enc* no = lista;
 
-    while(no != NULL) {
+    if( no == NULL )
+        return 0;
+
+    do {
         no = no->proximo;
         tamanho++;
-    }
+    } while(no->proximo != lista);
 
     return tamanho;
 }
@@ -48,12 +51,13 @@ int lista_numero_elementos(lista lista) {
 no_dup_enc* lista_obter_no_elemento(int elemento, lista lista) {
     no_dup_enc* no = lista;
 
-    while(no != NULL) {
-        if(no->elemento == elemento)
-            return no;
-        no = no->proximo;
+    if(lista != NULL) {
+        do {
+            if(no->elemento == elemento)
+                return no;
+            no = no->proximo;
+        } while (no != lista);
     }
-
     return NULL;
 }
 
@@ -63,10 +67,10 @@ int lista_inserir(int elemento, lista* lista) {
 
     if(lista == NULL)
         return REFERENCIA_INCORRETA;
-    
+
     if(lista_obter_no_elemento(elemento, *lista) != NULL)
         return ELEMENTO_EXISTENTE;
-    
+
     novo = lista_criar_no(elemento);
 
     if(*lista == NULL) {
@@ -76,52 +80,65 @@ int lista_inserir(int elemento, lista* lista) {
         no = *lista;
 
         // avança ate o ultimo
-        while(no->proximo != NULL)
+        do {
             no = no->proximo;
-        
+        } while(no->proximo != *lista);
+
         no->proximo = novo;
         novo->anterior = no;
     }
-    
+
+    novo->proximo = *lista;
+    (*lista)->anterior = novo;
+
     return SUCESSO;
 }
 
 // remover
 int lista_remover(int elemento, lista* lista) {
-    no_dup_enc *no, *ant, *prx;
+    no_dup_enc *no, *ant, *prx, *final;
 
     if(lista == NULL)
         return REFERENCIA_INCORRETA;
-    
+
     if(*lista == NULL)
         return LISTA_VAZIA;
-    
+
     if(lista_obter_no_elemento(elemento, *lista) == NULL)
         return ELEMENTO_INEXISTENTE;
-    
+
     no = *lista;
 
     // elemento e o primeiro no
     if(no->elemento == elemento) {
+        final = *lista;
+        do {
+            final = final->proximo;
+        } while(final->proximo != *lista);
+
         no = no->proximo;
+
+        if(no == *lista)
+            no = NULL;
+
         free(*lista);
         *lista = no;
 
-        if(no != NULL)
-            no->anterior = NULL;
+        if(no != NULL) {
+            final->proximo = *lista;
+            (*lista)->anterior = final;
+        }
     }
     // a partir do segundo elemento
     else {
         no = no->proximo;
 
-        while(no != NULL) {
+        while(no != *lista) {
             if(no->elemento == elemento) {
                 ant = no->anterior;
                 prx = no->proximo;
                 ant->proximo = prx;
-
-                if(prx != NULL)
-                    prx->anterior = ant;
+                prx->anterior = ant;
                 free(no);
                 break;
             }
@@ -132,11 +149,14 @@ int lista_remover(int elemento, lista* lista) {
 }
 
 // exibir
-void lista_exibir ( lista lista ){
+void lista_exibir ( lista lista ) {
     no_dup_enc *no = lista;
-    while (no != NULL) {
-        printf ("%d|", no->elemento );
-        no = no->proximo;
+
+    if(no != NULL) {
+        do {
+            printf ("%d|", no->elemento );
+            no = no->proximo;
+        } while(no != lista);
     }
     printf("\n") ;
 }
@@ -161,22 +181,22 @@ lista lista_ler() {
 // desalocar
 void lista_desalocar(lista* lista) {
     no_dup_enc *no, *prx;
-    
+
     if(lista != NULL) {
         if(*lista != NULL) {
             no = *lista;
             prx = no->proximo;
 
-            while(no != NULL) {
+            do {
                 free(no);
                 no = prx;
-                if(prx != NULL) {
+
+                if(prx != *lista)
                     prx = prx->proximo;
-                }
-            }
+
+            } while(no != *lista);
         }
     }
-
     *lista = NULL;
 }
 

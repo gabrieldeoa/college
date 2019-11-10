@@ -63,6 +63,8 @@ aluno ler_aluno() {
 
     printf("\nP2: ");
     scanf("%f", &aluno.p2);
+    
+    return aluno;
 }
 
 /* biblioteca */

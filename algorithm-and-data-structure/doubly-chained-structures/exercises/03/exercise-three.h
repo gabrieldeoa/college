@@ -1,30 +1,77 @@
-#ifndef LISTA_DUPLAMENTE_ENCADEADA_INTEIRO
-#define LISTA_DUPLAMENTE_ENCADEADA_INTEIRO
+#ifndef LISTA_DUPLAMENTE_ENCADEADA_VEICULO
+#define LISTA_DUPLAMENTE_ENCADEADA_VEICULO
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define REFERENCIA_INCORRETA -1
 #define ELEMENTO_EXISTENTE -2
 #define ELEMENTO_INEXISTENTE -3
 #define SUCESSO -4
 #define LISTA_VAZIA -5
+#define IGUAIS -6
+#define DIFERENTES -7
 
 /*** Estrutura ***/
 typedef struct _no_dup_enc no_dup_enc;
 
 typedef struct no_dup_enc* lista;
 
+typedef struct {
+    char placa[10];
+    char marca[20];
+    char modelo[40];
+    int ano;
+} veiculo;
+
 typedef struct _no_dup_enc {
-    int elemento;
+    veiculo elemento;
     no_dup_enc* proximo;
     no_dup_enc* anterior;
 };
 
 /*** Operações ***/
 
+/** Auxiliares **/
+int sao_veiculos_iguais(veiculo v1, veiculo v2) {
+    return (strcmp(v1.placa, v2.placa) == 0) ? IGUAIS : DIFERENTES;
+    
+}
+
+veiculo ler_veiculo() {
+    veiculo veiculo;
+
+    printf("\nplaca: ");
+    scanf("\n");
+    gets(veiculo.placa);
+
+    printf("marca: ");
+    scanf("\n");
+    gets(veiculo.marca);
+
+    printf("modelo: ");
+    scanf("\n");
+    gets(veiculo.modelo);
+
+    printf("ano: ");
+    scanf("%d", &veiculo.ano);
+
+    return veiculo;
+
+}
+
+void exibir_veiculo(veiculo veiculo) {
+    printf("\nplaca: %s", veiculo.placa);
+    printf("\nmarca: %s", veiculo.marca);
+    printf("\nmodelo: %s", veiculo.modelo);
+    printf("\nano: %d", veiculo.ano);
+
+}
+
+/** Biblioteca **/
 // criar
-no_dup_enc* lista_criar_no(int dado) {
+no_dup_enc* lista_criar_no(veiculo dado) {
     no_dup_enc* no = malloc(sizeof(no_dup_enc));
     no->elemento = dado;
     no->proximo = no->anterior = NULL;
@@ -45,11 +92,11 @@ int lista_numero_elementos(lista lista) {
 }
 
 // obter no
-no_dup_enc* lista_obter_no_elemento(int elemento, lista lista) {
+no_dup_enc* lista_obter_no_elemento(veiculo elemento, lista lista) {
     no_dup_enc* no = lista;
 
     while(no != NULL) {
-        if(no->elemento == elemento)
+        if(sao_veiculos_iguais(no->elemento, elemento) == IGUAIS)
             return no;
         no = no->proximo;
     }
@@ -58,7 +105,7 @@ no_dup_enc* lista_obter_no_elemento(int elemento, lista lista) {
 }
 
 // inserir
-int lista_inserir(int elemento, lista* lista) {
+int lista_inserir(veiculo elemento, lista* lista) {
     no_dup_enc *no, *novo;
 
     if(lista == NULL)
@@ -87,7 +134,7 @@ int lista_inserir(int elemento, lista* lista) {
 }
 
 // remover
-int lista_remover(int elemento, lista* lista) {
+int lista_remover(veiculo elemento, lista* lista) {
     no_dup_enc *no, *ant, *prx;
 
     if(lista == NULL)
@@ -102,7 +149,7 @@ int lista_remover(int elemento, lista* lista) {
     no = *lista;
 
     // elemento e o primeiro no
-    if(no->elemento == elemento) {
+    if(sao_veiculos_iguais(no->elemento, elemento) == IGUAIS) {
         no = no->proximo;
         free(*lista);
         *lista = no;
@@ -115,7 +162,7 @@ int lista_remover(int elemento, lista* lista) {
         no = no->proximo;
 
         while(no != NULL) {
-            if(no->elemento == elemento) {
+            if(sao_veiculos_iguais(no->elemento, elemento) == IGUAIS) {
                 ant = no->anterior;
                 prx = no->proximo;
                 ant->proximo = prx;
@@ -135,7 +182,8 @@ int lista_remover(int elemento, lista* lista) {
 void lista_exibir ( lista lista ){
     no_dup_enc *no = lista;
     while (no != NULL) {
-        printf ("%d|", no->elemento );
+        exibir_veiculo(no->elemento);
+        printf("\n");
         no = no->proximo;
     }
     printf("\n") ;
@@ -144,14 +192,14 @@ void lista_exibir ( lista lista ){
 // ler
 lista lista_ler() {
     lista l = NULL;
-    int i, elemento, quantidade;
+    int i, quantidade;
+    veiculo elemento;
 
-    printf("Quantos elementos deseja inserir ?");
+    printf("Quantos elementos deseja inserir: ");
     scanf("%d", &quantidade);
 
     for (i = 0; i < quantidade; i++) {
-        printf("LISTA[%d]= ", i);
-        scanf("%d", &elemento);
+        elemento = ler_veiculo();
         lista_inserir(elemento, &l);
     }
 
