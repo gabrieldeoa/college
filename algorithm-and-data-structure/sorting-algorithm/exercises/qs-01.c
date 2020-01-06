@@ -32,9 +32,9 @@ void quicksort_recursive(int lista[], int inicio, int fim) {
 
     if(inicio < fim) {
         while(i < j) {
-            while(lista[i] < pivo)
+            while(lista[i] > pivo)
                 i++;
-            while(lista[j] > pivo)
+            while(lista[j] < pivo)
                 j--;
             if(lista[i] == pivo)
                 posicao = i;
